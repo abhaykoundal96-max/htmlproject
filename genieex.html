@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Courier Pickup and Delivery">
+  <title>Genie Ex </title>
+  <link rel="icon" type="image/png" href="C:\Users\DELL\Desktop\cse326.projectt\WhatsApp Image 2026-11-18 at 2.45.36 PM.jpeg">
+  
+  <style>
+    /* Universal Box Sizing & Font Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #212529;
+      background-color: #f4f6f9;
+      padding-bottom: 2rem;
+    }
+
+    /* 1. HEADER & NAVIGATION */
+    header.site-header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    header.site-header hgroup h1 {
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    header.site-header hgroup p {
+      font-size: 0.95rem;
+      color: #dbe4f3;
+      margin-top: 0.25rem;
+    }
+
+    header.site-header hgroup mark {
+      background-color: #ffc107;
+      color: #212529;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    nav.main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 0.75rem;
+    }
+
+    nav.main-nav a.nav-link {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.12);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    nav.main-nav a.nav-link:hover {
+      background-color: #ffffff;
+      color: #1e3c72;
+      transform: translateY(-2px);
+    }
+
+    /* Notice Banner */
+    aside.announcement-banner {
+      background-color: #e8f4fd;
+      border-left: 5px solid #1e3c72;
+      padding: 0.75rem 2rem;
+      font-size: 0.9rem;
+      color: #0c5460;
+    }
+
+    /* 2. MAIN APPLICATION CONTAINER */
+    main.system-container {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Module Section Containers */
+    section.work-module {
+      background: #ffffff;
+      border: 1px solid #dce2ec;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+    }
+
+    header.module-header {
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    header.module-header h2 {
+      font-size: 1.4rem;
+      color: #1e3c72;
+    }
+
+    header.module-header p.member-credit {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 0.2rem;
+    }
+
+    
+    
+
+    /* 3. FORMS & CONTROLS */
+    form.panel-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    fieldset.form-group {
+      border: 1px solid #d1d9e6;
+      border-radius: 8px;
+      padding: 1.25rem;
+      background-color: #fafbfc;
+    }
+
+    fieldset.form-group legend {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #2b3a4a;
+      padding: 0 0.5rem;
+    }
+
+    p.field-row {
+      margin-bottom: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    p.field-row:last-child {
+      margin-bottom: 0;
+    }
+
+    p.field-row label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    p.field-row label abbr {
+      color: #dc3545;
+      text-decoration: none;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: #495057;
+      background-color: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+    }
+
+    p.checkbox-field label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    p.checkbox-field input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    label.radio-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-right: 1.5rem;
+      margin-top: 0.3rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    p.form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    button.btn {
+      padding: 0.6rem 1.25rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    button.btn:active {
+      transform: scale(0.98);
+    }
+
+    button.btn-primary {
+      background-color: #1e3c72;
+      color: #ffffff;
+    }
+
+    button.btn-primary:hover {
+      background-color: #162d56;
+    }
+
+    button.btn-secondary {
+      background-color: #e2e8f0;
+      color: #334155;
+      border-color: #cbd5e1;
+    }
+
+    button.btn-secondary:hover {
+      background-color: #cbd5e1;
+    }
+
+    button.btn-success {
+      background-color: #28a745;
+      color: #ffffff;
+    }
+
+    button.btn-success:hover {
+      background-color: #218838;
+    }
+
+    /* Estimated Price Box */
+    article.price-quote-box {
+      background: #eef7ed;
+      border: 1px solid #c3e6cb;
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      margin-top: 0.75rem;
+    }
+
+    article.price-quote-box h4 {
+      font-size: 0.95rem;
+      color: #155724;
+    }
+
+    output.price-display {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #28a745;
+      margin: 0.2rem 0;
+    }
+
+    small.tax-note {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    /* Feedback message outputs */
+    output.feedback-msg {
+      display: block;
+      padding: 0.65rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    output.feedback-msg.show-success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    output.feedback-msg.show-error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* 4. MODULE 2: BADGE & OPERATIONS */
+    article.badge-article {
+      background-color: #fff9db;
+      border: 1px solid #ffe066;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    article.badge-article h3 {
+      font-size: 1.1rem;
+      color: #856404;
+      margin-bottom: 0.4rem;
+    }
+
+    p.tracker-code-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    span.label-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #665100;
+    }
+
+    code.code-badge {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.3rem;
+      font-weight: bold;
+      background-color: #ffffff;
+      color: #d63384;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      border: 1px dashed #d63384;
+    }
+
+    /* 5. MODULE 3: TRACKING TIMELINE */
+    article.card-article {
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    article.card-article h3 {
+      font-size: 1.15rem;
+      color: #2b3a4a;
+      margin-bottom: 0.85rem;
+    }
+
+    form.search-form p.search-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    form.search-form p.search-group input {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    section.tracking-result {
+      margin-top: 1.25rem;
+      border-top: 1px solid #e9ecef;
+      padding-top: 1rem;
+    }
+
+    article.shipment-meta-card {
+      background-color: #f8fafc;
+      border-left: 4px solid #6f42c1;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    article.shipment-meta-card h4 {
+      color: #4a2d82;
+      margin-bottom: 0.4rem;
+    }
+
+    article.shipment-meta-card p {
+      font-size: 0.88rem;
+      margin-bottom: 0.25rem;
+    }
+
+    /* Stepper Timeline (Ordered List without generic tags) */
+    ol.tracking-stepper {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      position: relative;
+      margin: 1.5rem 0;
+      padding: 0;
+    }
+
+    li.step-item {
+      position: relative;
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      padding: 0.5rem 0.25rem;
+    }
+
+    li.step-item::before {
+      content: counter(list-item);
+      counter-increment: list-item;
+      display: block;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      text-align: center;
+      margin: 0 auto 0.5rem auto;
+      border-radius: 50%;
+      background-color: #dee2e6;
+      color: #6c757d;
+      font-weight: 700;
+      border: 2px solid #ced4da;
+      transition: all 0.3s ease;
+    }
+
+    li.step-item strong {
+      display: block;
+      font-size: 0.85rem;
+      color: #495057;
+    }
+
+    li.step-item small {
+      display: block;
+      font-size: 0.75rem;
+      color: #6c757d;
+      margin-top: 0.15rem;
+    }
+
+    /* Active Completed Milestone States */
+    li.step-item.step-completed::before {
+      background-color: #28a745;
+      color: #ffffff;
+      border-color: #1e7e34;
+      content: "✓";
+    }
+
+    li.step-item.step-completed strong {
+      color: #155724;
+    }
+
+    li.step-item.step-active::before {
+      background-color: #007bff;
+      color: #ffffff;
+      border-color: #0056b3;
+      box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+    }
+
+    li.step-item.step-active strong {
+      color: #0056b3;
+      font-weight: 700;
+    }
+
+    /* Details and Description List Event Log */
+    details.checkpoint-details {
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-top: 1rem;
+    }
+
+    details.checkpoint-details summary {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: #1e3c72;
+    }
+
+    dl.checkpoint-list {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    dl.checkpoint-list dt {
+      font-weight: 700;
+      color: #2b3a4a;
+      margin-top: 0.5rem;
+    }
+
+    dl.checkpoint-list dd {
+      margin-left: 1rem;
+      color: #555;
+    }
+
+    /* 6. SHIPMENT HISTORY TABLE */
+    article.history-panel p.filter-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    article.history-panel p.filter-controls select {
+      width: auto;
+      min-width: 180px;
+    }
+
+    table.shipment-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+      background-color: #ffffff;
+    }
+
+    table.shipment-table caption {
+      font-weight: 700;
+      font-size: 1rem;
+      text-align: left;
+      padding: 0.5rem 0;
+      color: #1e3c72;
+    }
+
+    table.shipment-table th,
+    table.shipment-table td {
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      border: 1px solid #dee2e6;
+    }
+
+    table.shipment-table thead tr {
+      background-color: #1e3c72;
+      color: #ffffff;
+    }
+
+    table.shipment-table tbody tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    table.shipment-table tbody tr:hover {
+      background-color: #eaf1fa;
+    }
+
+    table.shipment-table tfoot tr {
+      background-color: #e9ecef;
+      font-weight: 700;
+    }
+
+    /* Status Pill Badges */
+    span.status-pill {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    span.status-booked { background-color: #e2e8f0; color: #475569; }
+    span.status-picked { background-color: #fff3cd; color: #856404; }
+    span.status-transit { background-color: #cce5ff; color: #004085; }
+    span.status-out { background-color: #d1ecf1; color: #0c5460; }
+    span.status-delivered { background-color: #d4edda; color: #155724; }
+
+    /* 7. FOOTER */
+    footer.site-footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem 1rem;
+      font-size: 0.85rem;
+      color: #6c757d;
+      border-top: 1px solid #dee2e6;
+    }
+
+    footer.site-footer p {
+      margin-bottom: 0.25rem;
+    }
+
+    /* 8. RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      header.site-header {
+        padding: 1rem;
+      }
+      
+      header.site-header hgroup h1 {
+        font-size: 1.5rem;
+      }
+      
+      ol.tracking-stepper {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      table.shipment-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+    }
+  </style>
+</head>
+<body>
+ <header class="site-header">
+    <hgroup>
+      <h1>📦 Genie Ex <mark>Courier</mark></h1>
+    
+      
+    </hgroup>
+    <nav class="main-nav">
+      <a href="#booking-section" class="nav-link">1. Pickup &amp; Parcel</a>
+      <a href="#operations-section" class="nav-link">2. Staff Dispatch</a>
+      <a href="#tracking-section" class="nav-link">3. Live Tracking</a>
+      <a href="#history-section" class="nav-link">4. Shipment History</a>
+    </nav>
+  </header>
+
+  <!-- Notice Banner without generic wrappers (Semantic <aside>) -->
+  <aside class="announcement-banner">
+    
+  </aside>
+
+  <!-- ==================== MAIN APPLICATION CONTAINER ==================== -->
+  <main class="system-container">
+   <section id="booking-section" class="work-module">
+      <header class="module-header">
+        <h2>Module 1: Customer Booking &amp; Parcel Registration</h2>
+        
+      </header>
+
+      <!-- Customer Registration & Pickup Request Unified Form -->
+      <form id="booking-form" class="panel-form" novalidate>
+        
+        <!-- 1. Customer Registration (Unit 2: Fieldset & Legend) -->
+        <fieldset class="form-group">
+          <legend>1. Customer Registration</legend>
+          
+          <p class="field-row">
+            <label for="cust-name">Full Name: <abbr title="Required Field">*</abbr></label>
+            <input type="text" id="cust-name" name="customerName" placeholder="e.g. Abhay Koundal" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-email">Email Address: <abbr title="Required Field">*</abbr></label>
+            <input type="email" id="cust-email" name="customerEmail" placeholder="abhay.koundal@example.com" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-phone">Mobile Number: <abbr title="10-digit Indian Mobile Number">*</abbr></label>
+            <input type="tel" id="cust-phone" name="customerPhone" placeholder="9876543210" maxlength="10" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-type">Customer Category:</label>
+            <select id="cust-type" name="customerType">
+              <option value="Regular" selected>Regular Individual</option>
+              <option value="Student">Student (10% Discount)</option>
+              <option value="Corporate">Corporate / Business</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <!-- 2. Pickup Request -->
+        <fieldset class="form-group">
+          <legend>2. Pickup Request Details</legend>
+
+          <p class="field-row">
+            <label for="pickup-address">Pickup Street Address: <abbr title="Required Field">*</abbr></label>
+            <textarea id="pickup-address" name="pickupAddress" rows="2" placeholder="Hostel/House, Landmark, Street" required></textarea>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-city">Pickup City:</label>
+            <input type="text" id="pickup-city" name="pickupCity" value="Phagwara" required>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-date">Requested Pickup Date: <abbr title="Required Field">*</abbr></label>
+            <input type="date" id="pickup-date" name="pickupDate" required>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-slot">Preferred Time Window:</label>
+            <select id="pickup-slot" name="pickupSlot">
+              <option value="Morning (09:00 AM - 12:00 PM)">Morning (09:00 AM - 12:00 PM)</option>
+              <option value="Afternoon (12:00 PM - 04:00 PM)">Afternoon (12:00 PM - 04:00 PM)</option>
+              <option value="Evening (04:00 PM - 08:00 PM)">Evening (04:00 PM - 08:00 PM)</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <!-- 3. Parcel Details -->
+        <fieldset class="form-group">
+          <legend>3. Parcel Information &amp; Delivery Destination</legend>
+
+          <p class="field-row">
+            <label for="delivery-address">Recipient Address: <abbr title="Required Field">*</abbr></label>
+            <textarea id="delivery-address" name="deliveryAddress" rows="2" placeholder="Destination address with Pincode" required></textarea>
+          </p>
+
+          <p class="field-row">
+            <label for="parcel-category">Parcel Category:</label>
+            <select id="parcel-category" name="parcelCategory">
+              <option value="Documents">Legal Documents / Books</option>
+              <option value="Electronics">Electronics / Gadgets</option>
+              <option value="Apparel">Clothing &amp; Lifestyle</option>
+              <option value="Medicine">Medical Supplies</option>
+              <option value="Other">General Merchandise</option>
+            </select>
+          </p>
+
+          <p class="field-row">
+            <label for="parcel-weight">Weight in kg: <abbr title="Must be greater than 0">*</abbr></label>
+            <input type="number" id="parcel-weight" name="parcelWeight" min="0.1" max="50" step="0.1" value="1.0" required>
+          </p>
+
+          <p class="field-row checkbox-field">
+            <label>
+              <input type="checkbox" id="is-fragile" name="isFragile">
+              <span>Fragile Package (Extra care &amp; protective seal)</span>
+            </label>
+          </p>
+
+          <p class="field-row">
+            <label for="special-notes">Special Instructions:</label>
+            <textarea id="special-notes" name="specialNotes" rows="2" placeholder="e.g. Do not bend; call sender upon arrival"></textarea>
+          </p>
+
+          <!-- Live Estimated Fee Box using <article> -->
+          <article class="price-quote-box">
+            <h4>Estimated Shipping Charge:</h4>
+            <output id="estimated-price" class="price-display">&#8377; 80.00</output>
+            <small class="tax-note">(Includes base charge + weight + 18% GST)</small>
+          </article>
+        </fieldset>
+
+        <!-- Form Action Buttons -->
+        <p class="form-actions">
+          <button type="submit" id="btn-submit-booking" class="btn btn-primary">Book Pickup &amp; Generate Shipment</button>
+          <button type="reset" id="btn-reset-booking" class="btn btn-secondary">Reset Fields</button>
+        </p>
+
+        <!-- Status / Feedback Message using <output> -->
+        <output id="booking-msg" class="feedback-msg"></output>
+      </form>
+    </section>
+
+  <section id="operations-section" class="work-module">
+      <header class="module-header">
+        <h2>Module 2: Staff Dispatch &amp; Status Controls</h2>
+       
+      </header>
+
+      <!-- 4. Shipment ID Highlight Card -->
+      <article class="badge-article">
+        <h3>4. Active Shipment Identifier</h3>
+        <p>System automatically assigns a standardized tracking reference code to every approved pickup:</p>
+        <p class="tracker-code-container">
+          <span class="label-tag">Latest Generated ID:</span>
+          <code id="active-shipment-id" class="code-badge">CPD-2026-1001</code>
+        </p>
+      </article>
+
+      <!-- 5. Delivery Assignment & 6. Status Updates Form -->
+      <form id="dispatch-form" class="panel-form">
+        <fieldset class="form-group">
+          <legend>5. Courier Delivery Assignment</legend>
+
+          <p class="field-row">
+            <label for="select-shipment">Select Shipment ID:</label>
+            <select id="select-shipment" name="shipmentSelector">
+              <!-- Dynamically populated via JS -->
+            </select>
+          </p>
+
+          <p class="field-row">
+            <label for="assign-driver">Assign Field Executive (Driver):</label>
+            <select id="assign-driver" name="assignedDriver">
+              <option value="Ramesh Kumar (Bike - PB08-1122)">Ramesh Kumar (Bike - PB08-1122)</option>
+              <option value="Gurpreet Singh (Van - PB08-4455)">Gurpreet Singh (Van - PB08-4455)</option>
+              <option value="Sanjay Sharma (E-Scooter - PB08-9900)">Sanjay Sharma (E-Scooter - PB08-9900)</option>
+              <option value="Vikas Verma (Truck - PB08-7788)">Vikas Verma (Truck - PB08-7788)</option>
+            </select>
+          </p>
+
+          <p class="field-row">
+            <label>Priority Tier:</label>
+            <label class="radio-label">
+              <input type="radio" name="deliveryPriority" value="Standard" checked> Standard Delivery (2-3 Days)
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="deliveryPriority" value="Express"> Express Prime (Same Day / Next Day)
+            </label>
+          </p>
+
+          <p class="form-actions">
+            <button type="button" id="btn-assign-driver" class="btn btn-secondary">Confirm Driver Assignment</button>
+          </p>
+        </fieldset>
+
+        <!-- 6. Status Updates -->
+        <fieldset class="form-group">
+          <legend>6. Real-Time Status Milestone Update</legend>
+
+          <p class="field-row">
+            <label for="update-status-select">Set New Milestone:</label>
+            <select id="update-status-select" name="newStatus">
+              <option value="Order Booked">1. Order Booked</option>
+              <option value="Picked Up">2. Picked Up</option>
+              <option value="In Transit">3. In Transit (At Hub)</option>
+              <option value="Out for Delivery">4. Out for Delivery</option>
+              <option value="Delivered">5. Delivered</option>
+            </select>
+          </p>
+
+          <p class="field-row">
+            <label for="status-remarks">Checkpoint Location / Remarks:</label>
+            <input type="text" id="status-remarks" placeholder="e.g. Arrived at Jalandhar Sorting Facility">
+          </p>
+
+          <p class="form-actions">
+            <button type="button" id="btn-update-status" class="btn btn-primary">Update Status Milestone</button>
+          </p>
+
+          <output id="dispatch-msg" class="feedback-msg"></output>
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="tracking-section" class="work-module">
+      <header class="module-header">
+        <h2>Module 3: Live Tracking, Confirmation &amp; Records</h2>
+       
+      </header>
+
+      <!-- 7. Tracking Timeline -->
+      <article class="card-article">
+        <h3>7. Real-Time Shipment Tracking</h3>
+        
+        <form id="tracking-form" class="search-form" onsubmit="return false;">
+          <p class="search-group">
+            <label for="tracking-search-input">Enter Shipment ID:</label>
+            <input type="text" id="tracking-search-input" placeholder="e.g. CPD-2026-1001" required>
+            <button type="button" id="btn-track-shipment" class="btn btn-primary">Track Parcel</button>
+          </p>
+        </form>
+
+        <section id="tracking-result-panel" class="tracking-result">
+          <!-- Summary Header of Tracked Parcel -->
+          <article class="shipment-meta-card">
+            <h4>Shipment Overview</h4>
+            <p><strong>Tracking ID:</strong> <span id="track-disp-id">--</span></p>
+            <p><strong>Customer:</strong> <span id="track-disp-customer">--</span></p>
+            <p><strong>Destination:</strong> <span id="track-disp-dest">--</span></p>
+            <p><strong>Assigned Driver:</strong> <span id="track-disp-driver">Unassigned</span></p>
+            <p><strong>Current Status:</strong> <mark id="track-disp-status">--</mark></p>
+          </article>
+
+          <!-- Timeline Stepper using Semantic Ordered List <ol> -->
+          <h4>Delivery Journey Stages:</h4>
+          <ol class="tracking-stepper" id="tracking-stepper">
+            <li class="step-item" id="step-1">
+              <strong>Order Booked</strong>
+              <small>Pickup request logged in system</small>
+            </li>
+            <li class="step-item" id="step-2">
+              <strong>Picked Up</strong>
+              <small>Driver collected parcel from sender</small>
+            </li>
+            <li class="step-item" id="step-3">
+              <strong>In Transit</strong>
+              <small>Processed at central logistics hub</small>
+            </li>
+            <li class="step-item" id="step-4">
+              <strong>Out for Delivery</strong>
+              <small>Driver on route to recipient address</small>
+            </li>
+            <li class="step-item" id="step-5">
+              <strong>Delivered</strong>
+              <small>Package handed over and signed</small>
+            </li>
+          </ol>
+
+          <!-- Checkpoint Logs using Description List <dl> (Unit 1) -->
+          <details class="checkpoint-details" open>
+            <summary><strong>View Timestamped Event Logs</strong></summary>
+            <dl class="checkpoint-list" id="checkpoint-logs">
+              <dt>No event logs yet.</dt>
+              <dd>Track an active parcel above to view historical status transitions.</dd>
+            </dl>
+          </details>
+        </section>
+      </article>
+
+      <!-- 8. Delivery Confirmation -->
+      <article class="card-article confirmation-panel">
+        <h3>8. Recipient Delivery Confirmation</h3>
+        <p>Verify delivery and close consignment upon handover to the recipient:</p>
+
+        <form id="confirmation-form" class="panel-form" onsubmit="return false;">
+          <p class="field-row">
+            <label for="confirm-shipment-id">Shipment ID to Confirm:</label>
+            <input type="text" id="confirm-shipment-id" placeholder="CPD-2026-1001" required>
+          </p>
+
+          <p class="field-row">
+            <label for="recipient-sign-name">Received By (Name / Signature):</label>
+            <input type="text" id="recipient-sign-name" placeholder="Name of person receiving parcel" required>
+          </p>
+
+          <p class="field-row">
+            <label for="delivery-notes">Delivery Remarks / Rating:</label>
+            <input type="text" id="delivery-notes" placeholder="e.g. Delivered in good condition to security desk">
+          </p>
+
+          <p class="form-actions">
+            <button type="button" id="btn-confirm-delivery" class="btn btn-success">Finalize &amp; Issue Delivery Confirmation</button>
+          </p>
+          <output id="confirm-msg" class="feedback-msg"></output>
+        </form>
+      </article>
+
+      <!-- 9. Shipment History -->
+      <article id="history-section" class="card-article history-panel">
+        <h3>9. Comprehensive Shipment Ledger &amp; History</h3>
+        
+        <p class="filter-controls">
+          <label for="history-filter">Filter by Status:</label>
+          <select id="history-filter">
+            <option value="ALL">All Shipments</option>
+            <option value="Order Booked">Order Booked</option>
+            <option value="Picked Up">Picked Up</option>
+            <option value="In Transit">In Transit</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+          </select>
+          <button type="button" id="btn-refresh-history" class="btn btn-secondary">Refresh Table</button>
+        </p>
+
+        <!-- Full HTML Table (Unit 2: table, caption, thead, tbody, tfoot, th, td, colspan) -->
+        <table class="shipment-table" id="shipment-records-table">
+          <caption>Official Fast Express Courier Dispatch &amp; Delivery Log</caption>
+          <thead>
+            <tr>
+              <th>Shipment ID</th>
+              <th>Customer Name</th>
+              <th>Pickup City</th>
+              <th>Category</th>
+              <th>Weight</th>
+              <th>Assigned Executive</th>
+              <th>Status</th>
+              <th>Total (&#8377;)</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body">
+            <!-- Dynamically populated via JS -->
+          </tbody>
+          <tfoot id="history-table-foot">
+            <!-- Summary rows with colspan -->
+          </tfoot>
+        </table>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  
+
+ 
+  <script>
+    "use strict";
+    const STORAGE_KEY = "swift_drop_shipments_db";
+    const BASE_RATE = 50.00;       // Base booking fee in INR
+    const PER_KG_RATE = 20.00;     // Price per kg in INR
+    const FRAGILE_CHARGE = 35.00;  // Extra handling fee for fragile items
+    const GST_PERCENTAGE = 18;     // Standard Logistics GST %
+
+    // In-Memory Shipments Array (Persisted with localStorage)
+    let shipments = [];
+
+    // Seed Initial Sample Shipments if storage is empty
+    const seedInitialData = () => {
+      const existing = localStorage.getItem(STORAGE_KEY);
+      if (existing) {
+        try {
+          shipments = JSON.parse(existing);
+          return;
+        } catch (e) {
+          console.warn("Storage reset due to corrupted JSON.", e);
+        }
+      }
+
+      // Pre-loaded seed shipments showcasing all stages
+      shipments = [
+        {
+          id: "CPD-2026-1001",
+          customer: {
+            name: "Aman Verma",
+            email: "aman.verma@lpu.in",
+            phone: "9876543210",
+            type: "Student"
+          },
+          pickup: {
+            address: "BH-4, Room 302, LPU Campus",
+            city: "Phagwara",
+            date: "2026-11-16",
+            slot: "Morning (09:00 AM - 12:00 PM)"
+          },
+          parcel: {
+            deliveryAddress: "H.No 45, Model Town, Jalandhar, Punjab",
+            category: "Documents",
+            weight: 1.5,
+            isFragile: false,
+            notes: "Deliver before 5 PM",
+            fee: 80.24
+          },
+          assignment: {
+            driver: "Ramesh Kumar (Bike - PB08-1122)",
+            priority: "Express"
+          },
+          status: "In Transit",
+          checkpoints: [
+            { status: "Order Booked", location: "LPU Main Gate Hub", time: "16-Nov-2026 09:30 AM" },
+            { status: "Picked Up", location: "BH-4 Hostel Desk", time: "16-Nov-2026 11:15 AM" },
+            { status: "In Transit", location: "Jalandhar Sorting Facility", time: "16-Nov-2026 02:45 PM" }
+          ],
+          deliveryDetails: null
+        },
+        {
+          id: "CPD-2026-1002",
+          customer: {
+            name: "Priya Sharma",
+            email: "priya.s@gmail.com",
+            phone: "9812345678",
+            type: "Regular"
+          },
+          pickup: {
+            address: "Flat 12B, Green Valley Apts",
+            city: "Phagwara",
+            date: "2026-11-15",
+            slot: "Afternoon (12:00 PM - 04:00 PM)"
+          },
+          parcel: {
+            deliveryAddress: "Sector 22-B, Chandigarh",
+            category: "Electronics",
+            weight: 3.2,
+            isFragile: true,
+            notes: "Handle with extreme care",
+            fee: 175.82
+          },
+          assignment: {
+            driver: "Gurpreet Singh (Van - PB08-4455)",
+            priority: "Standard"
+          },
+          status: "Delivered",
+          checkpoints: [
+            { status: "Order Booked", location: "Phagwara Central Hub", time: "15-Nov-2026 10:00 AM" },
+            { status: "Picked Up", location: "Green Valley Apts", time: "15-Nov-2026 01:20 PM" },
+            { status: "In Transit", location: "Ludhiana Transshipment Center", time: "15-Nov-2026 06:10 PM" },
+            { status: "Out for Delivery", location: "Chandigarh Hub", time: "16-Nov-2026 08:30 AM" },
+            { status: "Delivered", location: "Recipient Doorstep", time: "16-Nov-2026 12:40 PM" }
+          ],
+          deliveryDetails: {
+            receivedBy: "Rohit Sharma (Brother)",
+            remarks: "Package received safely with seal intact",
+            completedAt: "16-Nov-2026 12:40 PM"
+          }
+        }
+      ];
+
+      saveShipmentsToStorage();
+    };
+
+    const saveShipmentsToStorage = () => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shipments));
+    };
+
+    const calculateShippingCost = (weight, category, isFragile, customerType) => {
+      const parsedWeight = Number(weight);
+      let basePrice = BASE_RATE + (parsedWeight * PER_KG_RATE);
+
+      // Category Surcharges
+      if (category === "Electronics") {
+        basePrice += 30;
+      } else if (category === "Medicine") {
+        basePrice += 15;
+      }
+
+      // Fragile Care Fee
+      if (isFragile) {
+        basePrice += FRAGILE_CHARGE;
+      }
+
+      // Customer Type Discount
+      let discount = 0;
+      if (customerType === "Student") {
+        discount = basePrice * 0.10; // 10% off
+      } else if (customerType === "Corporate") {
+        discount = basePrice * 0.05; // 5% off
+      }
+
+      const discountedAmount = basePrice - discount;
+      const gstAmount = (discountedAmount * GST_PERCENTAGE) / 100;
+      const finalTotal = discountedAmount + gstAmount;
+
+      return {
+        basePrice: Number(basePrice.toFixed(2)),
+        discount: Number(discount.toFixed(2)),
+        gst: Number(gstAmount.toFixed(2)),
+        total: Number(finalTotal.toFixed(2))
+      };
+    };
+
+    // Live Fee Preview Event Listener
+    const updateLivePricePreview = () => {
+      const weightInput = document.getElementById("parcel-weight");
+      const categoryInput = document.getElementById("parcel-category");
+      const fragileInput = document.getElementById("is-fragile");
+      const typeInput = document.getElementById("cust-type");
+      const priceDisplay = document.getElementById("estimated-price");
+
+      if (!weightInput || !priceDisplay) return;
+
+      const weight = Number(weightInput.value) > 0 ? Number(weightInput.value) : 1;
+      const category = categoryInput ? categoryInput.value : "Documents";
+      const isFragile = fragileInput ? fragileInput.checked : false;
+      const customerType = typeInput ? typeInput.value : "Regular";
+
+      const quote = calculateShippingCost(weight, category, isFragile, customerType);
+      priceDisplay.innerHTML = `&#8377; ${quote.total.toFixed(2)}`;
+    };
+
+    // Validation Function for Customer & Parcel Form
+    const validateBookingData = (data) => {
+      if (!data.name || data.name.trim().length < 3) {
+        return { isValid: false, message: "Error: Customer Name must have at least 3 characters." };
+      }
+
+      const atIdx = data.email.indexOf("@");
+      const dotIdx = data.email.lastIndexOf(".");
+      if (atIdx <= 0 || dotIdx <= atIdx + 1 || data.email.includes(" ")) {
+        return { isValid: false, message: "Error: Please enter a valid Email address (e.g. user@domain.com)." };
+      }
+
+      const cleanPhone = data.phone.trim();
+      if (cleanPhone.length !== 10 || Number.isNaN(Number(cleanPhone))) {
+        return { isValid: false, message: "Error: Mobile Number must be an exact 10-digit numeric value." };
+      }
+
+      if (!data.pickupAddress || data.pickupAddress.trim().length < 5) {
+        return { isValid: false, message: "Error: Complete pickup street address is required." };
+      }
+
+      if (!data.deliveryAddress || data.deliveryAddress.trim().length < 5) {
+        return { isValid: false, message: "Error: Complete delivery address is required." };
+      }
+
+      if (!data.pickupDate) {
+        return { isValid: false, message: "Error: Please pick a scheduled pickup date." };
+      }
+
+      return { isValid: true, message: "All inputs are valid!" };
+    };
+
+    // Booking Form Submit Handler (Abhay Koundal)
+    const handleBookingSubmission = (event) => {
+      event.preventDefault();
+
+      const nameVal = document.getElementById("cust-name").value;
+      const emailVal = document.getElementById("cust-email").value;
+      const phoneVal = document.getElementById("cust-phone").value;
+      const custTypeVal = document.getElementById("cust-type").value;
+
+      const pickupAddrVal = document.getElementById("pickup-address").value;
+      const pickupCityVal = document.getElementById("pickup-city").value;
+      const pickupDateVal = document.getElementById("pickup-date").value;
+      const pickupSlotVal = document.getElementById("pickup-slot").value;
+
+      const deliveryAddrVal = document.getElementById("delivery-address").value;
+      const categoryVal = document.getElementById("parcel-category").value;
+      const weightVal = Number(document.getElementById("parcel-weight").value);
+      const isFragileVal = document.getElementById("is-fragile").checked;
+      const notesVal = document.getElementById("special-notes").value;
+      const outputMsg = document.getElementById("booking-msg");
+
+      const formData = {
+        name: nameVal,
+        email: emailVal,
+        phone: phoneVal,
+        pickupAddress: pickupAddrVal,
+        deliveryAddress: deliveryAddrVal,
+        pickupDate: pickupDateVal
+      };
+
+      const validation = validateBookingData(formData);
+      if (!validation.isValid) {
+        outputMsg.textContent = validation.message;
+        outputMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      const quote = calculateShippingCost(weightVal, categoryVal, isFragileVal, custTypeVal);
+      const newShipmentId = generateShipmentId();
+
+      const newShipment = {
+        id: newShipmentId,
+        customer: {
+          name: nameVal.trim(),
+          email: emailVal.trim().toLowerCase(),
+          phone: phoneVal.trim(),
+          type: custTypeVal
+        },
+        pickup: {
+          address: pickupAddrVal.trim(),
+          city: pickupCityVal.trim(),
+          date: pickupDateVal,
+          slot: pickupSlotVal
+        },
+        parcel: {
+          deliveryAddress: deliveryAddrVal.trim(),
+          category: categoryVal,
+          weight: weightVal,
+          isFragile: isFragileVal,
+          notes: notesVal.trim() || "None",
+          fee: quote.total
+        },
+        assignment: {
+          driver: "Unassigned",
+          priority: "Standard"
+        },
+        status: "Order Booked",
+        checkpoints: [
+          {
+            status: "Order Booked",
+            location: `${pickupCityVal} Central Booking Desk`,
+            time: formatCurrentDateTime()
+          }
+        ],
+        deliveryDetails: null
+      };
+
+      shipments.push(newShipment);
+      saveShipmentsToStorage();
+
+      displayGeneratedShipmentId(newShipmentId);
+      populateShipmentSelectorDropdown();
+      renderShipmentHistoryTable("ALL");
+
+      outputMsg.textContent = `Success! Pickup scheduled for ${newShipment.customer.name}. Tracking ID assigned: ${newShipmentId} (Total: ₹ ${newShipment.parcel.fee.toFixed(2)})`;
+      outputMsg.className = "feedback-msg show-success";
+
+      document.getElementById("booking-form").reset();
+      updateLivePricePreview();
+    };
+
+    
+
+    // 4. Shipment ID Generator Function (String & Math methods)
+    const generateShipmentId = () => {
+      const randomSerial = Math.floor(Math.random() * 9000) + 1000;
+      const currentYear = new Date().getFullYear();
+      return `CPD-${currentYear}-${randomSerial}`;
+    };
+
+    const displayGeneratedShipmentId = (id) => {
+      const badgeElement = document.getElementById("active-shipment-id");
+      if (badgeElement) {
+        badgeElement.textContent = id;
+      }
+    };
+
+    // Populate the Shipment Selector Dropdown in Module 2
+    const populateShipmentSelectorDropdown = () => {
+      const selector = document.getElementById("select-shipment");
+      if (!selector) return;
+
+      selector.innerHTML = "";
+
+      if (shipments.length === 0) {
+        const opt = document.createElement("option");
+        opt.value = "";
+        opt.textContent = "-- No Shipments Available --";
+        selector.appendChild(opt);
+        return;
+      }
+
+      for (let i = 0; i < shipments.length; i++) {
+        const s = shipments[i];
+        const opt = document.createElement("option");
+        opt.value = s.id;
+        opt.textContent = `${s.id} - ${s.customer.name} [${s.status}]`;
+        selector.appendChild(opt);
+      }
+    };
+
+    // 5. Delivery Assignment Handler
+    const handleDriverAssignment = () => {
+      const shipmentId = document.getElementById("select-shipment").value;
+      const driver = document.getElementById("assign-driver").value;
+      const priorityRadio = document.querySelector('input[name="deliveryPriority"]:checked');
+      const priority = priorityRadio ? priorityRadio.value : "Standard";
+      const dispatchMsg = document.getElementById("dispatch-msg");
+
+      if (!shipmentId) {
+        dispatchMsg.textContent = "Error: Please select a valid shipment first.";
+        dispatchMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      const shipment = shipments.find(item => item.id === shipmentId);
+      if (!shipment) {
+        dispatchMsg.textContent = `Error: Shipment ${shipmentId} not found.`;
+        dispatchMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      shipment.assignment.driver = driver;
+      shipment.assignment.priority = priority;
+
+      shipment.checkpoints.push({
+        status: shipment.status,
+        location: `Assigned to ${driver} (${priority} Priority)`,
+        time: formatCurrentDateTime()
+      });
+
+      saveShipmentsToStorage();
+      populateShipmentSelectorDropdown();
+      renderShipmentHistoryTable("ALL");
+
+      dispatchMsg.textContent = `Updated: ${shipment.id} assigned to ${driver} with ${priority} Priority.`;
+      dispatchMsg.className = "feedback-msg show-success";
+    };
+
+    // 6. Real-Time Status Milestone Update Handler
+    const handleStatusUpdate = () => {
+      const shipmentId = document.getElementById("select-shipment").value;
+      const newStatus = document.getElementById("update-status-select").value;
+      const remarksInput = document.getElementById("status-remarks");
+      const remarks = remarksInput.value.trim() || "Status milestone reached";
+      const dispatchMsg = document.getElementById("dispatch-msg");
+
+      if (!shipmentId) {
+        dispatchMsg.textContent = "Error: Select a shipment to update.";
+        dispatchMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      const shipment = shipments.find(item => item.id === shipmentId);
+      if (!shipment) {
+        dispatchMsg.textContent = "Error: Shipment not found.";
+        dispatchMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      let milestoneLocation = "";
+      switch (newStatus) {
+        case "Order Booked":
+          milestoneLocation = "Central Dispatch Hub";
+          break;
+        case "Picked Up":
+          milestoneLocation = `${shipment.pickup.city} - Driver Pickup Point`;
+          break;
+        case "In Transit":
+          milestoneLocation = remarks || "Regional Sorting & Transshipment Facility";
+          break;
+        case "Out for Delivery":
+          milestoneLocation = `Local Delivery Van - ${shipment.assignment.driver}`;
+          break;
+        case "Delivered":
+          milestoneLocation = "Destination Recipient Handover";
+          if (!shipment.deliveryDetails) {
+            shipment.deliveryDetails = {
+              receivedBy: "Authorized Receiver",
+              remarks: remarks,
+              completedAt: formatCurrentDateTime()
+            };
+          }
+          break;
+        default:
+          milestoneLocation = "Operations Checkpoint";
+      }
+
+      shipment.status = newStatus;
+      shipment.checkpoints.push({
+        status: newStatus,
+        location: milestoneLocation,
+        time: formatCurrentDateTime()
+      });
+
+      saveShipmentsToStorage();
+      populateShipmentSelectorDropdown();
+      renderShipmentHistoryTable("ALL");
+
+      const activeTrackedId = document.getElementById("track-disp-id").textContent;
+      if (activeTrackedId === shipment.id) {
+        renderTrackingView(shipment);
+      }
+
+      remarksInput.value = "";
+      dispatchMsg.textContent = `Status Updated: ${shipment.id} is now [${newStatus}].`;
+      dispatchMsg.className = "feedback-msg show-success";
+    };
+
+    const getStatusStageIndex = (status) => {
+      switch (status) {
+        case "Order Booked": return 1;
+        case "Picked Up": return 2;
+        case "In Transit": return 3;
+        case "Out for Delivery": return 4;
+        case "Delivered": return 5;
+        default: return 1;
+      }
+    };
+
+    // 7. Render Tracking Timeline & Checkpoints
+    const renderTrackingView = (shipment) => {
+      document.getElementById("track-disp-id").textContent = shipment.id;
+      document.getElementById("track-disp-customer").textContent = `${shipment.customer.name} (${shipment.customer.phone})`;
+      document.getElementById("track-disp-dest").textContent = `${shipment.parcel.deliveryAddress}`;
+      document.getElementById("track-disp-driver").textContent = shipment.assignment.driver;
+      
+      const statusMark = document.getElementById("track-disp-status");
+      statusMark.textContent = shipment.status;
+
+      const currentStageNum = getStatusStageIndex(shipment.status);
+
+      for (let i = 1; i <= 5; i++) {
+        const stepEl = document.getElementById(`step-${i}`);
+        if (stepEl) {
+          stepEl.classList.remove("step-completed", "step-active");
+          if (i < currentStageNum) {
+            stepEl.classList.add("step-completed");
+          } else if (i === currentStageNum) {
+            stepEl.classList.add("step-active");
+          }
+        }
+      }
+
+      const checkpointContainer = document.getElementById("checkpoint-logs");
+      checkpointContainer.innerHTML = "";
+
+      if (shipment.checkpoints.length === 0) {
+        const dt = document.createElement("dt");
+        dt.textContent = "No log records recorded.";
+        checkpointContainer.appendChild(dt);
+      } else {
+        for (let j = shipment.checkpoints.length - 1; j >= 0; j--) {
+          const cp = shipment.checkpoints[j];
+          const dt = document.createElement("dt");
+          dt.textContent = `📍 ${cp.status} — ${cp.time}`;
+          
+          const dd = document.createElement("dd");
+          dd.textContent = cp.location;
+
+          checkpointContainer.appendChild(dt);
+          checkpointContainer.appendChild(dd);
+        }
+      }
+    };
+
+    // 7. Track Shipment Button Click Handler
+    const handleTrackingLookup = () => {
+      const queryInput = document.getElementById("tracking-search-input");
+      const query = queryInput.value.trim().toUpperCase();
+
+      if (!query) {
+        alert("Please enter a Shipment ID to track.");
+        return;
+      }
+
+      const found = shipments.find(s => s.id === query);
+      if (!found) {
+        alert(`No shipment found matching tracking ID: "${query}".`);
+        return;
+      }
+
+      renderTrackingView(found);
+    };
+
+    // 8. Delivery Confirmation Handler
+    const handleDeliveryConfirmation = () => {
+      const shipmentIdInput = document.getElementById("confirm-shipment-id");
+      const recipientNameInput = document.getElementById("recipient-sign-name");
+      const notesInput = document.getElementById("delivery-notes");
+      const confirmMsg = document.getElementById("confirm-msg");
+
+      const shipmentId = shipmentIdInput.value.trim().toUpperCase();
+      const recipientName = recipientNameInput.value.trim();
+      const notes = notesInput.value.trim() || "Signed and verified upon arrival";
+
+      if (!shipmentId || !recipientName) {
+        confirmMsg.textContent = "Error: Please provide both the Shipment ID and Recipient Name.";
+        confirmMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      const shipment = shipments.find(s => s.id === shipmentId);
+      if (!shipment) {
+        confirmMsg.textContent = `Error: Shipment ID "${shipmentId}" not found.`;
+        confirmMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      if (shipment.status === "Delivered") {
+        confirmMsg.textContent = `Shipment ${shipment.id} has already been marked as Delivered previously.`;
+        confirmMsg.className = "feedback-msg show-success";
+        return;
+      }
+
+      shipment.status = "Delivered";
+      shipment.deliveryDetails = {
+        receivedBy: recipientName,
+        remarks: notes,
+        completedAt: formatCurrentDateTime()
+      };
+
+      shipment.checkpoints.push({
+        status: "Delivered",
+        location: `Received by: ${recipientName} (${notes})`,
+        time: formatCurrentDateTime()
+      });
+
+      saveShipmentsToStorage();
+      populateShipmentSelectorDropdown();
+      renderShipmentHistoryTable("ALL");
+
+      const currentActiveTrackId = document.getElementById("track-disp-id").textContent;
+      if (currentActiveTrackId === shipment.id) {
+        renderTrackingView(shipment);
+      }
+
+      confirmMsg.textContent = `Success: Delivery confirmed for ${shipment.id}. Handed over to "${recipientName}".`;
+      confirmMsg.className = "feedback-msg show-success";
+
+      shipmentIdInput.value = "";
+      recipientNameInput.value = "";
+      notesInput.value = "";
+    };
+
+    // 9. Shipment History Table Renderer (Unit 2: table, caption, thead, tbody, tfoot, colspan)
+    const renderShipmentHistoryTable = (filterStatus = "ALL") => {
+      const tbody = document.getElementById("history-table-body");
+      const tfoot = document.getElementById("history-table-foot");
+      if (!tbody || !tfoot) return;
+
+      tbody.innerHTML = "";
+      tfoot.innerHTML = "";
+
+      let displayList = shipments;
+      if (filterStatus !== "ALL") {
+        displayList = shipments.filter(s => s.status === filterStatus);
+      }
+
+      if (displayList.length === 0) {
+        const emptyRow = document.createElement("tr");
+        const emptyCell = document.createElement("td");
+        emptyCell.colSpan = 8;
+        emptyCell.style.textAlign = "center";
+        emptyCell.style.padding = "1.5rem";
+        emptyCell.textContent = "No shipment records found matching the selected filter.";
+        emptyRow.appendChild(emptyCell);
+        tbody.appendChild(emptyRow);
+      } else {
+        let totalRevenue = 0;
+        let deliveredCount = 0;
+
+        for (let i = 0; i < displayList.length; i++) {
+          const s = displayList[i];
+          totalRevenue += s.parcel.fee;
+          if (s.status === "Delivered") {
+            deliveredCount++;
+          }
+
+          const row = document.createElement("tr");
+
+          // Column 1: Shipment ID (Clickable to track)
+          const tdId = document.createElement("td");
+          const codeEl = document.createElement("code");
+          codeEl.textContent = s.id;
+          codeEl.style.cursor = "pointer";
+          codeEl.title = "Click to Track";
+          codeEl.onclick = () => {
+            document.getElementById("tracking-search-input").value = s.id;
+            handleTrackingLookup();
+            window.location.hash = "#tracking-section";
+          };
+          tdId.appendChild(codeEl);
+          row.appendChild(tdId);
+
+          // Column 2: Customer Name
+          const tdCustomer = document.createElement("td");
+          tdCustomer.textContent = s.customer.name;
+          row.appendChild(tdCustomer);
+
+          // Column 3: Pickup City
+          const tdCity = document.createElement("td");
+          tdCity.textContent = s.pickup.city;
+          row.appendChild(tdCity);
+
+          // Column 4: Category
+          const tdCategory = document.createElement("td");
+          tdCategory.textContent = s.parcel.category;
+          row.appendChild(tdCategory);
+
+          // Column 5: Weight
+          const tdWeight = document.createElement("td");
+          tdWeight.textContent = `${s.parcel.weight} kg`;
+          row.appendChild(tdWeight);
+
+          // Column 6: Assigned Executive
+          const tdDriver = document.createElement("td");
+          tdDriver.textContent = s.assignment.driver;
+          row.appendChild(tdDriver);
+
+          // Column 7: Status Badge
+          const tdStatus = document.createElement("td");
+          const statusSpan = document.createElement("span");
+          statusSpan.textContent = s.status;
+          statusSpan.className = getStatusPillClass(s.status);
+          tdStatus.appendChild(statusSpan);
+          row.appendChild(tdStatus);
+
+          // Column 8: Fee
+          const tdFee = document.createElement("td");
+          tdFee.innerHTML = `&#8377; ${s.parcel.fee.toFixed(2)}`;
+          row.appendChild(tdFee);
+
+          tbody.appendChild(row);
+        }
+
+        // Summary Foot Rows
+        const footRow1 = document.createElement("tr");
+        const footSummaryCell1 = document.createElement("th");
+        footSummaryCell1.colSpan = 5;
+        footSummaryCell1.textContent = `Total Displayed: ${displayList.length} Parcels (${deliveredCount} Delivered, ${displayList.length - deliveredCount} Active)`;
+        
+        const footSummaryCell2 = document.createElement("th");
+        footSummaryCell2.colSpan = 2;
+        footSummaryCell2.style.textAlign = "right";
+        footSummaryCell2.textContent = "Grand Total Amount:";
+
+        const footSummaryCell3 = document.createElement("th");
+        footSummaryCell3.innerHTML = `&#8377; ${totalRevenue.toFixed(2)}`;
+
+        footRow1.appendChild(footSummaryCell1);
+        footRow1.appendChild(footSummaryCell2);
+        footRow1.appendChild(footSummaryCell3);
+        tfoot.appendChild(footRow1);
+      }
+    };
+
+    // Helper: Pill CSS Class for Status
+    const getStatusPillClass = (status) => {
+      switch (status) {
+        case "Order Booked": return "status-pill status-booked";
+        case "Picked Up": return "status-pill status-picked";
+        case "In Transit": return "status-pill status-transit";
+        case "Out for Delivery": return "status-pill status-out";
+        case "Delivered": return "status-pill status-delivered";
+        default: return "status-pill";
+      }
+    };
+
+    // Utility: Format Date and Time
+    const formatCurrentDateTime = () => {
+      const d = new Date();
+      const day = String(d.getDate()).padStart(2, "0");
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const month = months[d.getMonth()];
+      const year = d.getFullYear();
+
+      let hours = d.getHours();
+      const minutes = String(d.getMinutes()).padStart(2, "0");
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+
+      return `${day}-${month}-${year} ${hours}:${minutes} ${ampm}`;
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Seed sample records
+      seedInitialData();
+
+      // Set default pickup date to today
+      const pickupDateInput = document.getElementById("pickup-date");
+      if (pickupDateInput) {
+        const today = new Date().toISOString().split("T")[0];
+        pickupDateInput.value = today;
+        pickupDateInput.min = today;
+      }
+
+      // --- Attach Part 1 Listeners (Abhay Koundal) ---
+      const bookingForm = document.getElementById("booking-form");
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", handleBookingSubmission);
+      }
+
+      const liveInputs = ["parcel-weight", "parcel-category", "is-fragile", "cust-type"];
+      liveInputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("input", updateLivePricePreview);
+          el.addEventListener("change", updateLivePricePreview);
+        }
+      });
+
+      // Initial price estimation calculation
+      updateLivePricePreview();
+
+      // --- Attach Part 2 Listeners (Harshit Choudhary) ---
+      const btnAssign = document.getElementById("btn-assign-driver");
+      if (btnAssign) {
+        btnAssign.addEventListener("click", handleDriverAssignment);
+      }
+
+      const btnUpdateStatus = document.getElementById("btn-update-status");
+      if (btnUpdateStatus) {
+        btnUpdateStatus.addEventListener("click", handleStatusUpdate);
+      }
+
+      // Populate Dropdown for Part 2
+      populateShipmentSelectorDropdown();
+
+      // --- Attach Part 3 Listeners (Anant Dwivedi) ---
+      const btnTrack = document.getElementById("btn-track-shipment");
+      if (btnTrack) {
+        btnTrack.addEventListener("click", handleTrackingLookup);
+      }
+
+      const btnConfirm = document.getElementById("btn-confirm-delivery");
+      if (btnConfirm) {
+        btnConfirm.addEventListener("click", handleDeliveryConfirmation);
+      }
+
+      const filterSelect = document.getElementById("history-filter");
+      if (filterSelect) {
+        filterSelect.addEventListener("change", (e) => {
+          renderShipmentHistoryTable(e.target.value);
+        });
+      }
+
+      const btnRefresh = document.getElementById("btn-refresh-history");
+      if (btnRefresh) {
+        btnRefresh.addEventListener("click", () => {
+          const currentFilter = document.getElementById("history-filter").value;
+          renderShipmentHistoryTable(currentFilter);
+        });
+      }
+
+      // Render initial history table
+      renderShipmentHistoryTable("ALL");
+
+      // Load first shipment into the tracking preview automatically
+      if (shipments.length > 0) {
+        renderTrackingView(shipments[0]);
+        displayGeneratedShipmentId(shipments[0].id);
+      }
+    });
+  </script>
+</body>
+</html>

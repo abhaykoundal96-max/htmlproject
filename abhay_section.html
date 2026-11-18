@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Module 1: Customer Booking & Parcel Registration - Abhay Koundal (12615252)">
+  <title>SwiftDrop | Module 1 - Abhay Koundal (12615252)</title>
+  
+  <style>
+    /* Universal Box Sizing & Font Reset (Unit 3) */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #212529;
+      background-color: #f4f6f9;
+      padding-bottom: 2.5rem;
+    }
+
+    /* Header & Navigation */
+    header.site-header {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    header.site-header hgroup h1 {
+      font-size: 2rem;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    header.site-header hgroup p {
+      font-size: 0.95rem;
+      color: #dbe4f3;
+      margin-top: 0.25rem;
+    }
+
+    header.site-header hgroup mark {
+      background-color: #ffc107;
+      color: #212529;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    aside.announcement-banner {
+      background-color: #e8f4fd;
+      border-left: 5px solid #28a745;
+      padding: 0.75rem 2rem;
+      font-size: 0.9rem;
+      color: #0c5460;
+    }
+
+    /* Main Container */
+    main.system-container {
+      max-width: 900px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    section.work-module {
+      background: #ffffff;
+      border: 1px solid #dce2ec;
+      border-top: 5px solid #28a745; /* Green Accent for Abhay */
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      padding: 1.75rem;
+    }
+
+    header.module-header {
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    header.module-header h2 {
+      font-size: 1.4rem;
+      color: #1e3c72;
+    }
+
+    header.module-header p.member-credit {
+      font-size: 0.88rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+    }
+
+    /* Forms & Fieldsets */
+    form.panel-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    fieldset.form-group {
+      border: 1px solid #d1d9e6;
+      border-radius: 8px;
+      padding: 1.25rem;
+      background-color: #fafbfc;
+    }
+
+    fieldset.form-group legend {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #2b3a4a;
+      padding: 0 0.5rem;
+    }
+
+    p.field-row {
+      margin-bottom: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    p.field-row:last-child {
+      margin-bottom: 0;
+    }
+
+    p.field-row label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    p.field-row label abbr {
+      color: #dc3545;
+      text-decoration: none;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: #495057;
+      background-color: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
+    }
+
+    p.checkbox-field label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+
+    p.checkbox-field input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    /* Live Price Quote Article */
+    article.price-quote-box {
+      background: #eef7ed;
+      border: 1px solid #c3e6cb;
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      margin-top: 0.75rem;
+    }
+
+    article.price-quote-box h4 {
+      font-size: 0.95rem;
+      color: #155724;
+    }
+
+    output.price-display {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #28a745;
+      margin: 0.2rem 0;
+    }
+
+    small.tax-note {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+
+    /* Action Buttons */
+    p.form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    button.btn {
+      padding: 0.65rem 1.4rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    button.btn:active {
+      transform: scale(0.98);
+    }
+
+    button.btn-primary {
+      background-color: #1e3c72;
+      color: #ffffff;
+    }
+
+    button.btn-primary:hover {
+      background-color: #162d56;
+    }
+
+    button.btn-secondary {
+      background-color: #e2e8f0;
+      color: #334155;
+      border-color: #cbd5e1;
+    }
+
+    button.btn-secondary:hover {
+      background-color: #cbd5e1;
+    }
+
+    /* Feedback Message Output */
+    output.feedback-msg {
+      display: none;
+      padding: 0.75rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    output.feedback-msg.show-success {
+      display: block;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+
+    output.feedback-msg.show-error {
+      display: block;
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+
+    /* Recent Bookings Mini List */
+    article.recent-bookings-card {
+      margin-top: 2rem;
+      border-top: 2px dashed #dce2ec;
+      padding-top: 1.25rem;
+    }
+
+    article.recent-bookings-card h3 {
+      font-size: 1.15rem;
+      color: #1e3c72;
+      margin-bottom: 0.75rem;
+    }
+
+    ol.bookings-list {
+      padding-left: 1.25rem;
+      font-size: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    ol.bookings-list li {
+      background-color: #fafbfc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem 1rem;
+      font-size: 0.85rem;
+      color: #6c757d;
+      border-top: 1px solid #dee2e6;
+    }
+
+    footer.site-footer p {
+      margin-bottom: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== HEADER (Unit 1 & 2) ==================== -->
+  <header class="site-header">
+    <hgroup>
+      <h1>📦 Fast Express</h1>
+      <p>Courier Pickup &amp; Delivery Management System &bull; <mark>Module 1</mark></p>
+    </hgroup>
+  </header>
+
+  <aside class="announcement-banner">
+    <p><strong>Group 20 &bull; Section K3P26YK:</strong> Module 1 assigned to <strong>Abhay Koundal (Leader)</strong> &bull; Reg No: <code>12615252</code>. Pure Semantic HTML5 (Zero <code>&lt;div&gt;</code>).</p>
+  </aside>
+
+  <!-- ==================== MAIN SECTION (Abhay Koundal) ==================== -->
+  <main class="system-container">
+    <section id="booking-section" class="work-module">
+      <header class="module-header">
+        <h2>Module 1: Customer Booking &amp; Parcel Registration</h2>
+        <p class="member-credit">Assigned Features: <strong>1. Customer registration</strong> &bull; <strong>2. Pickup request</strong> &bull; <strong>3. Parcel details</strong></p>
+      </header>
+
+      <form id="booking-form" class="panel-form" novalidate>
+        
+        <!-- 1. Customer Registration (Unit 2: Fieldset & Legend) -->
+        <fieldset class="form-group">
+          <legend>1. Customer Registration</legend>
+          
+          <p class="field-row">
+            <label for="cust-name">Full Name: <abbr title="Required Field">*</abbr></label>
+            <input type="text" id="cust-name" name="customerName" placeholder="e.g. Abhay Koundal" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-email">Email Address: <abbr title="Required Field">*</abbr></label>
+            <input type="email" id="cust-email" name="customerEmail" placeholder="abhay.koundal@example.com" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-phone">Mobile Number: <abbr title="10-digit Indian Mobile Number">*</abbr></label>
+            <input type="tel" id="cust-phone" name="customerPhone" placeholder="9876543210" maxlength="10" required>
+          </p>
+
+          <p class="field-row">
+            <label for="cust-type">Customer Category:</label>
+            <select id="cust-type" name="customerType">
+              <option value="Regular" selected>Regular Individual</option>
+              <option value="Student">Student (10% Discount)</option>
+              <option value="Corporate">Corporate / Business</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <!-- 2. Pickup Request -->
+        <fieldset class="form-group">
+          <legend>2. Pickup Request Details</legend>
+
+          <p class="field-row">
+            <label for="pickup-address">Pickup Street Address: <abbr title="Required Field">*</abbr></label>
+            <textarea id="pickup-address" name="pickupAddress" rows="2" placeholder="Hostel/House, Landmark, Street" required></textarea>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-city">Pickup City:</label>
+            <input type="text" id="pickup-city" name="pickupCity" value="Phagwara" required>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-date">Requested Pickup Date: <abbr title="Required Field">*</abbr></label>
+            <input type="date" id="pickup-date" name="pickupDate" required>
+          </p>
+
+          <p class="field-row">
+            <label for="pickup-slot">Preferred Time Window:</label>
+            <select id="pickup-slot" name="pickupSlot">
+              <option value="Morning (09:00 AM - 12:00 PM)">Morning (09:00 AM - 12:00 PM)</option>
+              <option value="Afternoon (12:00 PM - 04:00 PM)">Afternoon (12:00 PM - 04:00 PM)</option>
+              <option value="Evening (04:00 PM - 08:00 PM)">Evening (04:00 PM - 08:00 PM)</option>
+            </select>
+          </p>
+        </fieldset>
+
+        <!-- 3. Parcel Details -->
+        <fieldset class="form-group">
+          <legend>3. Parcel Information &amp; Delivery Destination</legend>
+
+          <p class="field-row">
+            <label for="delivery-address">Recipient Address: <abbr title="Required Field">*</abbr></label>
+            <textarea id="delivery-address" name="deliveryAddress" rows="2" placeholder="Destination address with Pincode" required></textarea>
+          </p>
+
+          <p class="field-row">
+            <label for="parcel-category">Parcel Category:</label>
+            <select id="parcel-category" name="parcelCategory">
+              <option value="Documents">Legal Documents / Books</option>
+              <option value="Electronics">Electronics / Gadgets</option>
+              <option value="Apparel">Clothing &amp; Lifestyle</option>
+              <option value="Medicine">Medical Supplies</option>
+              <option value="Other">General Merchandise</option>
+            </select>
+          </p>
+
+          <p class="field-row">
+            <label for="parcel-weight">Weight in kg: <abbr title="Must be greater than 0">*</abbr></label>
+            <input type="number" id="parcel-weight" name="parcelWeight" min="0.1" max="50" step="0.1" value="1.0" required>
+          </p>
+
+          <p class="field-row checkbox-field">
+            <label>
+              <input type="checkbox" id="is-fragile" name="isFragile">
+              <span>Fragile Package (Extra care &amp; protective seal)</span>
+            </label>
+          </p>
+
+          <p class="field-row">
+            <label for="special-notes">Special Instructions:</label>
+            <textarea id="special-notes" name="specialNotes" rows="2" placeholder="e.g. Do not bend; call sender upon arrival"></textarea>
+          </p>
+
+          <!-- Live Estimated Shipping Cost Box -->
+          <article class="price-quote-box">
+            <h4>Estimated Shipping Charge:</h4>
+            <output id="estimated-price" class="price-display">&#8377; 80.00</output>
+            <small class="tax-note">(Includes base charge + weight + 18% GST)</small>
+          </article>
+        </fieldset>
+
+        <!-- Form Action Buttons -->
+        <p class="form-actions">
+          <button type="submit" id="btn-submit-booking" class="btn btn-primary">Book Pickup &amp; Generate Shipment</button>
+          <button type="reset" id="btn-reset-booking" class="btn btn-secondary">Reset Fields</button>
+        </p>
+
+        <!-- Feedback Message Output -->
+        <output id="booking-msg" class="feedback-msg"></output>
+      </form>
+
+      <!-- Live Log of Bookings Saved to LocalStorage -->
+      <article class="recent-bookings-card">
+        <h3>Recent Bookings in System:</h3>
+        <ol class="bookings-list" id="recent-bookings-list">
+          <!-- Dynamically populated via JS -->
+        </ol>
+      </article>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <p>&copy; 2026 <strong>SwiftDrop Logistics</strong> &bull; School of Computer Science &amp; Engineering, LPU</p>
+    <p>Module 1 Author: <strong>Abhay Koundal (Leader)</strong> &bull; Registration: <code>12615252</code> &bull; Section: <code>K3P26YK</code></p>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT LOGIC (Unit 4) ==================== -->
+  <script>
+    "use strict";
+
+    // Global Constants
+    const STORAGE_KEY = "swift_drop_shipments_db";
+    const BASE_RATE = 50.00;
+    const PER_KG_RATE = 20.00;
+    const FRAGILE_CHARGE = 35.00;
+    const GST_PERCENTAGE = 18;
+
+    let shipments = [];
+
+    // Helper: Format Current Date & Time
+    const formatCurrentDateTime = () => {
+      const d = new Date();
+      const day = String(d.getDate()).padStart(2, "0");
+      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const month = months[d.getMonth()];
+      const year = d.getFullYear();
+      let hours = d.getHours();
+      const minutes = String(d.getMinutes()).padStart(2, "0");
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12;
+      hours = hours ? hours : 12;
+      return `${day}-${month}-${year} ${hours}:${minutes} ${ampm}`;
+    };
+
+    // Load Shipments from LocalStorage
+    const loadShipments = () => {
+      const existing = localStorage.getItem(STORAGE_KEY);
+      if (existing) {
+        try {
+          shipments = JSON.parse(existing);
+        } catch (e) {
+          shipments = [];
+        }
+      }
+    };
+
+    // Save Shipments to LocalStorage
+    const saveShipments = () => {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(shipments));
+    };
+
+    // Helper: Calculate Shipping Charge (Operators, Numbers & Math)
+    const calculateShippingCost = (weight, category, isFragile, customerType) => {
+      const parsedWeight = Number(weight);
+      let basePrice = BASE_RATE + (parsedWeight * PER_KG_RATE);
+
+      if (category === "Electronics") {
+        basePrice += 30;
+      } else if (category === "Medicine") {
+        basePrice += 15;
+      }
+
+      if (isFragile) {
+        basePrice += FRAGILE_CHARGE;
+      }
+
+      let discount = 0;
+      if (customerType === "Student") {
+        discount = basePrice * 0.10; // 10% student discount
+      } else if (customerType === "Corporate") {
+        discount = basePrice * 0.05; // 5% corporate discount
+      }
+
+      const discountedAmount = basePrice - discount;
+      const gstAmount = (discountedAmount * GST_PERCENTAGE) / 100;
+      const finalTotal = discountedAmount + gstAmount;
+
+      return {
+        basePrice: Number(basePrice.toFixed(2)),
+        discount: Number(discount.toFixed(2)),
+        gst: Number(gstAmount.toFixed(2)),
+        total: Number(finalTotal.toFixed(2))
+      };
+    };
+
+    // Live Fee Preview Event Listener
+    const updateLivePricePreview = () => {
+      const weightInput = document.getElementById("parcel-weight");
+      const categoryInput = document.getElementById("parcel-category");
+      const fragileInput = document.getElementById("is-fragile");
+      const typeInput = document.getElementById("cust-type");
+      const priceDisplay = document.getElementById("estimated-price");
+
+      if (!weightInput || !priceDisplay) return;
+
+      const weight = Number(weightInput.value) > 0 ? Number(weightInput.value) : 1;
+      const category = categoryInput ? categoryInput.value : "Documents";
+      const isFragile = fragileInput ? fragileInput.checked : false;
+      const customerType = typeInput ? typeInput.value : "Regular";
+
+      const quote = calculateShippingCost(weight, category, isFragile, customerType);
+      priceDisplay.innerHTML = `&#8377; ${quote.total.toFixed(2)}`;
+    };
+
+    // Validation Function for Customer & Parcel Form
+    const validateBookingData = (data) => {
+      if (!data.name || data.name.trim().length < 3) {
+        return { isValid: false, message: "Error: Customer Name must have at least 3 characters." };
+      }
+
+      const atIdx = data.email.indexOf("@");
+      const dotIdx = data.email.lastIndexOf(".");
+      if (atIdx <= 0 || dotIdx <= atIdx + 1 || data.email.includes(" ")) {
+        return { isValid: false, message: "Error: Please enter a valid Email address (e.g. user@domain.com)." };
+      }
+
+      const cleanPhone = data.phone.trim();
+      if (cleanPhone.length !== 10 || Number.isNaN(Number(cleanPhone))) {
+        return { isValid: false, message: "Error: Mobile Number must be an exact 10-digit numeric value." };
+      }
+
+      if (!data.pickupAddress || data.pickupAddress.trim().length < 5) {
+        return { isValid: false, message: "Error: Complete pickup street address is required." };
+      }
+
+      if (!data.deliveryAddress || data.deliveryAddress.trim().length < 5) {
+        return { isValid: false, message: "Error: Complete delivery address is required." };
+      }
+
+      if (!data.pickupDate) {
+        return { isValid: false, message: "Error: Please pick a scheduled pickup date." };
+      }
+
+      return { isValid: true, message: "All inputs are valid!" };
+    };
+
+    // Render Recent Bookings
+    const renderRecentBookings = () => {
+      const listEl = document.getElementById("recent-bookings-list");
+      if (!listEl) return;
+      listEl.innerHTML = "";
+
+      if (shipments.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "No bookings registered yet. Submit the form above to book a parcel!";
+        listEl.appendChild(li);
+        return;
+      }
+
+      for (let i = shipments.length - 1; i >= 0; i--) {
+        const s = shipments[i];
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${s.id}</strong> &bull; Customer: <em>${s.customer.name}</em> &bull; Route: ${s.pickup.city} &rarr; ${s.parcel.deliveryAddress} &bull; Total: <strong>₹ ${s.parcel.fee.toFixed(2)}</strong> &bull; [${s.status}]`;
+        listEl.appendChild(li);
+      }
+    };
+
+    // Booking Form Submit Handler (Abhay Koundal)
+    const handleBookingSubmission = (event) => {
+      event.preventDefault();
+
+      const nameVal = document.getElementById("cust-name").value;
+      const emailVal = document.getElementById("cust-email").value;
+      const phoneVal = document.getElementById("cust-phone").value;
+      const custTypeVal = document.getElementById("cust-type").value;
+
+      const pickupAddrVal = document.getElementById("pickup-address").value;
+      const pickupCityVal = document.getElementById("pickup-city").value;
+      const pickupDateVal = document.getElementById("pickup-date").value;
+      const pickupSlotVal = document.getElementById("pickup-slot").value;
+
+      const deliveryAddrVal = document.getElementById("delivery-address").value;
+      const categoryVal = document.getElementById("parcel-category").value;
+      const weightVal = Number(document.getElementById("parcel-weight").value);
+      const isFragileVal = document.getElementById("is-fragile").checked;
+      const notesVal = document.getElementById("special-notes").value;
+      const outputMsg = document.getElementById("booking-msg");
+
+      const formData = {
+        name: nameVal,
+        email: emailVal,
+        phone: phoneVal,
+        pickupAddress: pickupAddrVal,
+        deliveryAddress: deliveryAddrVal,
+        pickupDate: pickupDateVal
+      };
+
+      const validation = validateBookingData(formData);
+      if (!validation.isValid) {
+        outputMsg.textContent = validation.message;
+        outputMsg.className = "feedback-msg show-error";
+        return;
+      }
+
+      const quote = calculateShippingCost(weightVal, categoryVal, isFragileVal, custTypeVal);
+      const randomSerial = Math.floor(Math.random() * 9000) + 1000;
+      const newShipmentId = `CPD-${new Date().getFullYear()}-${randomSerial}`;
+
+      const newShipment = {
+        id: newShipmentId,
+        customer: {
+          name: nameVal.trim(),
+          email: emailVal.trim().toLowerCase(),
+          phone: phoneVal.trim(),
+          type: custTypeVal
+        },
+        pickup: {
+          address: pickupAddrVal.trim(),
+          city: pickupCityVal.trim(),
+          date: pickupDateVal,
+          slot: pickupSlotVal
+        },
+        parcel: {
+          deliveryAddress: deliveryAddrVal.trim(),
+          category: categoryVal,
+          weight: weightVal,
+          isFragile: isFragileVal,
+          notes: notesVal.trim() || "None",
+          fee: quote.total
+        },
+        assignment: {
+          driver: "Unassigned",
+          priority: "Standard"
+        },
+        status: "Order Booked",
+        checkpoints: [
+          {
+            status: "Order Booked",
+            location: `${pickupCityVal} Central Booking Desk`,
+            time: formatCurrentDateTime()
+          }
+        ],
+        deliveryDetails: null
+      };
+
+      loadShipments();
+      shipments.push(newShipment);
+      saveShipments();
+
+      outputMsg.textContent = `Success! Pickup scheduled for ${newShipment.customer.name}. Tracking ID assigned: ${newShipmentId} (Total: ₹ ${newShipment.parcel.fee.toFixed(2)})`;
+      outputMsg.className = "feedback-msg show-success";
+
+      document.getElementById("booking-form").reset();
+      updateLivePricePreview();
+      renderRecentBookings();
+    };
+
+    // Initialization
+    document.addEventListener("DOMContentLoaded", () => {
+      loadShipments();
+      renderRecentBookings();
+
+      const pickupDateInput = document.getElementById("pickup-date");
+      if (pickupDateInput) {
+        const today = new Date().toISOString().split("T")[0];
+        pickupDateInput.value = today;
+        pickupDateInput.min = today;
+      }
+
+      const bookingForm = document.getElementById("booking-form");
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", handleBookingSubmission);
+      }
+
+      const liveInputs = ["parcel-weight", "parcel-category", "is-fragile", "cust-type"];
+      liveInputs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.addEventListener("input", updateLivePricePreview);
+          el.addEventListener("change", updateLivePricePreview);
+        }
+      });
+
+      updateLivePricePreview();
+    });
+  </script>
+</body>
+</html>
